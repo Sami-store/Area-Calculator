@@ -1,0 +1,293 @@
+/**
+ * File name: AreaCalculator
+ * Short description: Calculates the area of various shapes based on user input
+ * @author Samuel Melenciuc
+ * details of the revision: none
+ */
+
+import java.util.Scanner;
+public class AreaCalculator {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int userNum = 0; //Creating user input
+        //Using do while loop because we want to print the menu at least once
+        do {
+            printOptions();
+            userNum = in.nextInt();
+                switch (userNum) {  //Using switch cases to determine which method to use
+                    case 0:
+                        System.exit(1); //Exits the program
+                    case 1: // Area of a circle
+                        System.out.println("Please enter the radius of the circle:");
+                        double radius = in.nextDouble();
+                        System.out.printf("The area of the circle is %.3f\n", circle(radius));
+                        break;
+                    case 2: //Area of a triangle
+                        System.out.println("Please enter the base of the triangle:");
+                        double base = in.nextDouble();
+                        System.out.println("Please enter the height of the triangle:");
+                        double height = in.nextDouble();
+                        System.out.printf("The area of the triangle is %.3f\n", triangle(base, height));
+                        break;
+                    case 3: //Area of a rectangle
+                        System.out.println("Please enter the width of the rectangle:");
+                        double width = in.nextDouble();
+                        System.out.println("Please enter the height of the rectangle:");
+                        double heightRec = in.nextDouble();
+                        System.out.printf("The area of the rectangle is %.3f\n", rectangle(width, heightRec));
+                        break;
+                    case 4: //Area of a square
+                        System.out.println("Please enter the side of the square:");
+                        double side = in.nextDouble();
+                        System.out.printf("The area of the square is %.3f\n", square(side));
+                        break;
+                    case 5: //Area of a trapezoid
+                        System.out.println("Please enter the top of the trapezoid");
+                        double top = in.nextDouble();
+                        System.out.println("Please enter the bottom of the trapezoid");
+                        double bottom = in.nextDouble();
+                        System.out.println("Please enter the height of the trapezoid");
+                        double heightTrap = in.nextDouble();
+                        System.out.printf("The area of the trapezoid is %.3f\n", trapezoid(top, bottom, heightTrap));
+                        break;
+                    default: //Any other number
+                        System.out.println("Unknown option " + userNum + " Please try again.");
+                        break;
+                }
+        } while (userNum != 0); //Will break the loop if 0
+    }
+
+    //This method prints the menu
+    public static void printOptions(){
+        System.out.println("********** Area Calculator **********");
+        System.out.println("0) Exit");
+        System.out.println("1) Circle");
+        System.out.println("2) Triangle");
+        System.out.println("3) Rectangle");
+        System.out.println("4) Square");
+        System.out.println("5) Trapezoid");
+        System.out.println("Please enter your option (0-5):");
+    }
+
+    //This method return the value of pi
+    public static double pi(){
+        return 3.14159;
+    }
+
+    //This method returns the area of a circle
+    public static double circle(double radius){
+        return pi() * radius * radius;
+    }
+
+    //This method returns the area of a triangle
+    public static double triangle(double base, double height){
+        return 0.5 * base * height;
+    }
+
+    //This method returns the area of a rectangle
+    public static double rectangle(double width, double height){
+        return width * height;
+    }
+
+    //This method returns the area of a square
+    public static double square(double side){
+        return side * side;
+    }
+
+    //This method returns the area of a trapezoid
+    public static double trapezoid(double top, double bottom, double height) {
+        return (top + bottom) / 2 * height;
+    }
+}
+
+/** Test output 1
+ * ********** Area Calculator **********
+ * 0) Exit
+ * 1) Circle
+ * 2) Triangle
+ * 3) Rectangle
+ * 4) Square
+ * 5) Trapezoid
+ * Please enter your option (0-5):
+ * 1
+ * Please enter the radius of the circle:
+ * 5.2
+ * The area of the circle is 84.949
+ * ********** Area Calculator **********
+ * 0) Exit
+ * 1) Circle
+ * 2) Triangle
+ * 3) Rectangle
+ * 4) Square
+ * 5) Trapezoid
+ * Please enter your option (0-5):
+ * 2
+ * Please enter the base of the triangle:
+ * 10
+ * Please enter the height of the triangle:
+ * 4.6
+ * The area of the triangle is 23.000
+ * ********** Area Calculator **********
+ * 0) Exit
+ * 1) Circle
+ * 2) Triangle
+ * 3) Rectangle
+ * 4) Square
+ * 5) Trapezoid
+ * Please enter your option (0-5):
+ * 3
+ * Please enter the width of the rectangle:
+ * 2.5
+ * Please enter the height of the rectangle:
+ * 6.5
+ * The area of the rectangle is 16.250
+ * ********** Area Calculator **********
+ * 0) Exit
+ * 1) Circle
+ * 2) Triangle
+ * 3) Rectangle
+ * 4) Square
+ * 5) Trapezoid
+ * Please enter your option (0-5):
+ * 4
+ * Please enter the side of the square:
+ * 4.56789
+ * The area of the square is 20.866
+ * ********** Area Calculator **********
+ * 0) Exit
+ * 1) Circle
+ * 2) Triangle
+ * 3) Rectangle
+ * 4) Square
+ * 5) Trapezoid
+ * Please enter your option (0-5):
+ * 5
+ * Please enter the top of the trapezoid
+ * 1.2
+ * Please enter the bottom of the trapezoid
+ * 3.4
+ * Please enter the height of the trapezoid
+ * 6
+ * The area of the trapezoid is 13.800
+ * ********** Area Calculator **********
+ * 0) Exit
+ * 1) Circle
+ * 2) Triangle
+ * 3) Rectangle
+ * 4) Square
+ * 5) Trapezoid
+ * Please enter your option (0-5):
+ * 6
+ * Invalid number, please try again.
+ * ********** Area Calculator **********
+ * 0) Exit
+ * 1) Circle
+ * 2) Triangle
+ * 3) Rectangle
+ * 4) Square
+ * 5) Trapezoid
+ * Please enter your option (0-5):
+ * 0
+ *
+ *
+ * Test output 2
+ *********** Area Calculator **********
+ * 0) Exit
+ * 1) Circle
+ * 2) Triangle
+ * 3) Rectangle
+ * 4) Square
+ * 5) Trapezoid
+ * Please enter your option (0-5):
+ * 10
+ * Unknown option 10 Please try again.
+ * ********** Area Calculator **********
+ * 0) Exit
+ * 1) Circle
+ * 2) Triangle
+ * 3) Rectangle
+ * 4) Square
+ * 5) Trapezoid
+ * Please enter your option (0-5):
+ * 0
+ *
+ *
+ * Test output 3
+ *********** Area Calculator **********
+ * 0) Exit
+ * 1) Circle
+ * 2) Triangle
+ * 3) Rectangle
+ * 4) Square
+ * 5) Trapezoid
+ * Please enter your option (0-5):
+ * 1
+ * Please enter the radius of the circle:
+ * 3
+ * The area of the circle is 28.274
+ * ********** Area Calculator **********
+ * 0) Exit
+ * 1) Circle
+ * 2) Triangle
+ * 3) Rectangle
+ * 4) Square
+ * 5) Trapezoid
+ * Please enter your option (0-5):
+ * 2
+ * Please enter the base of the triangle:
+ * 2
+ * Please enter the height of the triangle:
+ * 30
+ * The area of the triangle is 30.000
+ * ********** Area Calculator **********
+ * 0) Exit
+ * 1) Circle
+ * 2) Triangle
+ * 3) Rectangle
+ * 4) Square
+ * 5) Trapezoid
+ * Please enter your option (0-5):
+ * 3
+ * Please enter the width of the rectangle:
+ * 6
+ * Please enter the height of the rectangle:
+ * 3
+ * The area of the rectangle is 18.000
+ * ********** Area Calculator **********
+ * 0) Exit
+ * 1) Circle
+ * 2) Triangle
+ * 3) Rectangle
+ * 4) Square
+ * 5) Trapezoid
+ * Please enter your option (0-5):
+ * 4
+ * Please enter the side of the square:
+ * 8
+ * The area of the square is 64.000
+ * ********** Area Calculator **********
+ * 0) Exit
+ * 1) Circle
+ * 2) Triangle
+ * 3) Rectangle
+ * 4) Square
+ * 5) Trapezoid
+ * Please enter your option (0-5):
+ * 5
+ * Please enter the top of the trapezoid
+ * 100
+ * Please enter the bottom of the trapezoid
+ * 54
+ * Please enter the height of the trapezoid
+ * 333
+ * The area of the trapezoid is 25641.000
+ * ********** Area Calculator **********
+ * 0) Exit
+ * 1) Circle
+ * 2) Triangle
+ * 3) Rectangle
+ * 4) Square
+ * 5) Trapezoid
+ * Please enter your option (0-5):
+ * 0
+ */
